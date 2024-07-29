@@ -11,7 +11,7 @@
         <h1>WeatherGlimpse</h1>
         <div>
           <input type="search" id="search" />
-          <img src="" />
+          <img src="" id="search-icon" />
 
           <input type="checkbox" id="switch" class="checkbox" />
           <label for="switch" class="toggle">
@@ -31,24 +31,27 @@
           <div>L:<span id="low">70</span>&deg;</div>
         </div>
       </div>
-      <div class="forecast">
-        <div class="today">
-          <div class="day-today"></div>
-          <div class="high-today"></div>
-          <img id="icon-today" />
-          <div class="low-today"></div>
-        </div>
-        <div class="tommorow">
-          <div class="day-tommrow"></div>
-          <div class="high-tommrow"></div>
-          <img id="icon-tommrow" />
-          <div class="low-tommrow"></div>
-        </div>
-        <div class="next">
-          <div class="day-next"></div>
-          <div class="high-next"></div>
-          <img id="icon-next" />
-          <div class="low-next"></div>
+      <div class="forecast-container">
+        <div class="title">3-DAY FORECAST</div>
+        <div class="forecast">
+          <div class="today">
+            <div class="day-today" id="dayOfWeek"></div>
+            <div class="high-today" id="temp"></div>
+            <img id="icon-today" />
+            <div class="low-today" id="temp"></div>
+          </div>
+          <div class="tommorow">
+            <div class="day-tommrow" id="dayOfWeek"></div>
+            <div class="high-tommrow" id="temp"></div>
+            <img id="icon-tommrow" />
+            <div class="low-tommrow" id="temp"></div>
+          </div>
+          <div class="next">
+            <div class="day-next" id="dayOfWeek"></div>
+            <div class="high-next" id="temp"></div>
+            <img id="icon-next" />
+            <div class="low-next" id="temp"></div>
+          </div>
         </div>
       </div>
     </div>

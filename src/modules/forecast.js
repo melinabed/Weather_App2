@@ -16,21 +16,14 @@ const highNext = document.querySelector(".high-next");
 const iconNextImg = document.querySelector("#icon-next");
 const lowNext = document.querySelector(".low-next");
 
+const toggleSwitch = document.querySelector("#switch");
+
 const forecast = (() => {
   const formatDate = (date) => {
     let nums = date.split("-").map((num) => +num);
 
     const result = format(new Date(nums[0], nums[1] - 1, nums[2]), "cccc");
     return result;
-  };
-
-  const hourly = (info) => {
-    //let hours = info.forecast.forecastday[0].hour;
-    //console.log(hours);
-    //let today = new Date().getHours();
-    //for (let i = today; i < hours.length; i++) {
-    //console.log(hours[i].temp_f);
-    //}
   };
 
   const weekly = (info) => {
@@ -72,6 +65,7 @@ const forecast = (() => {
     lowTommorow.textContent = minTempF_tommrow + "\u00B0";
 
     let iconTommorow = info.forecast.forecastday[1].day.condition.icon;
+    iconTommorowImg.src = iconTommorow;
 
     //Forecast variables for next day after tommorow
     let nextDay = info.forecast.forecastday[2].date;
@@ -91,9 +85,30 @@ const forecast = (() => {
     lowNext.textContent = minTempF_next + "\u00B0";
 
     let iconNext = info.forecast.forecastday[2].day.condition.icon;
+    iconNextImg.src = iconNext;
+
+    toggleSwitch.addEventListener("click", () => {
+      if (toggleSwitch.checked == true) {
+        highToday.textContent = render.roundTemp(maxTempC_today) + "\u00B0";
+        lowToday.textContent = render.roundTemp(minTempC_today) + "\u00B0";
+        highTommorow.textContent =
+          render.roundTemp(maxTempC_tommrow) + "\u00B0";
+        lowTommorow.textContent = render.roundTemp(minTempC_tommrow) + "\u00B0";
+        highNext.textContent = render.roundTemp(maxTempC_next) + "\u00B0";
+        lowNext.textContent = render.roundTemp(minTempC_next) + "\u00B0";
+      } else {
+        highToday.textContent = render.roundTemp(maxTempF_today) + "\u00B0";
+        lowToday.textContent = render.roundTemp(minTempF_today) + "\u00B0";
+        highTommorow.textContent =
+          render.roundTemp(maxTempF_tommrow) + "\u00B0";
+        lowTommorow.textContent = render.roundTemp(minTempF_tommrow) + "\u00B0";
+        highNext.textContent = render.roundTemp(maxTempF_next) + "\u00B0";
+        lowNext.textContent = render.roundTemp(minTempF_next) + "\u00B0";
+      }
+    });
   };
 
-  return { hourly, weekly };
+  return { weekly };
 })();
 
 export default forecast;

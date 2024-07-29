@@ -53,7 +53,7 @@ const render = (() => {
     return num.toFixed();
   };
 
-  return { displayInfo, roundTemp, roundTemp };
+  return { displayInfo, roundTemp };
 })();
 
 export default render;

@@ -18,7 +18,7 @@ const myWeather = (() => {
     //Fetches the url for weather data but with cityName being interchangeable
 
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=99c082834be743eaa18223854241106&q=${cityName}&days=8&aqi=no&alerts=no`,
+      `http://api.weatherapi.com/v1/forecast.json?key=99c082834be743eaa18223854241106&q=${cityName}&days=2&aqi=no&alerts=no`,
       { mode: "cors" }
     );
     if (response.status === 400) {
@@ -29,7 +29,6 @@ const myWeather = (() => {
       console.log(info);
       render.displayInfo(info);
       forecast.weekly(info);
-      forecast.hourly(info);
     }
   };
 

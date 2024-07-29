@@ -1,4 +1,5 @@
 import render from "./display";
+import forecast from "./forecast";
 
 const search = document.querySelector("#search");
 
@@ -17,16 +18,18 @@ const myWeather = (() => {
     //Fetches the url for weather data but with cityName being interchangeable
 
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=99c082834be743eaa18223854241106&q=${cityName}&days=3&aqi=no&alerts=no`,
+      `http://api.weatherapi.com/v1/forecast.json?key=99c082834be743eaa18223854241106&q=${cityName}&days=8&aqi=no&alerts=no`,
       { mode: "cors" }
     );
     if (response.status === 400) {
-      console.log("custom error message");
+      console.log("Custom error message: 'invalid city name'");
       alert("Invalid city name");
     } else {
       const info = await response.json();
       console.log(info);
       render.displayInfo(info);
+      forecast.weekly(info);
+      forecast.hourly(info);
     }
   };
 

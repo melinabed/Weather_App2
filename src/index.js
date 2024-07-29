@@ -1,6 +1,5 @@
 import "./style.css";
 import myWeather from "./modules/weather";
-
 import Icon from "./search.svg";
 
 myWeather.getInfo("Wahiawa");
